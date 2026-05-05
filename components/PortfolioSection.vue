@@ -75,13 +75,13 @@ const projects = [
   {
     title: 'WonderWoman Nigeria',
     tags: ['Vue.js', 'Nuxt.js', 'Tailwind', 'TypeScript'],
-    description: 'Community platform celebrating Nigerian women in leadership and entrepreneurship — fully responsive, content-rich web experience.',
+    description: 'Community platform celebrating Nigerian women in leadership and entrepreneurship, fully responsive, content-rich web experience.',
     url: 'https://wonderwomannigeria.org'
   },
   {
     title: 'Termii Communications Platform',
     tags: ['Vue.js', 'Nuxt.js', 'REST APIs', 'Paystack'],
-    description: 'Mission-critical features across Termii\'s global messaging platform — wallet flows, billing, and real-time dashboards serving 6M+ monthly active users in 140+ countries.',
+    description: 'Mission-critical features across Termii\'s global messaging platform: wallet flows, billing, and real-time dashboards serving 6M+ monthly active users in 140+ countries.',
     url: ''
   }
 ]

@@ -38,6 +38,14 @@
           >
             Contact Me
           </a>
+          <button
+            data-cal-link="priscilla-olajumoke-oni-myhwqz/secret"
+            data-cal-namespace="secret"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            class="px-6 py-3 border border-accent-blue/40 hover:border-accent-blue text-accent-blue text-sm font-semibold rounded-full transition-colors duration-200"
+          >
+            Book a Free Consultation
+          </button>
         </div>
 
         <!-- Social links -->

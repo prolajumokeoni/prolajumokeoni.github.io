@@ -15,7 +15,7 @@
             Have a project in mind or just want to say hello? I'm always open to discussing new opportunities, freelance work, or collaborations.
           </p>
 
-          <div class="space-y-5">
+          <div class="space-y-5 mb-10">
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
                 <svg class="w-4 h-4 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,6 +52,24 @@
               </div>
             </div>
           </div>
+
+          <!-- Book a Consultation -->
+          <div class="border border-accent-blue/20 rounded-xl p-6 bg-accent-blue/5">
+            <p class="text-xs text-accent-blue font-semibold uppercase tracking-widest mb-2">Free Consultation</p>
+            <h3 class="text-white font-bold text-lg mb-2">Book a 30-min call</h3>
+            <p class="text-gray-400 text-sm mb-5">Let's talk about your project, goals, or how I can help. Pick a time that works for you.</p>
+            <button
+              data-cal-link="priscilla-olajumoke-oni-myhwqz/secret"
+              data-cal-namespace="secret"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              class="w-full bg-accent-blue hover:bg-accent-blue-hover text-white text-sm font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Book a Free Consultation
+            </button>
+          </div>
         </div>
 
         <!-- Right: Form -->
@@ -63,6 +81,7 @@
                 v-model="form.name"
                 type="text"
                 placeholder="Your name"
+                required
                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue transition-colors"
               />
             </div>
@@ -72,6 +91,7 @@
                 v-model="form.email"
                 type="email"
                 placeholder="your@email.com"
+                required
                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue transition-colors"
               />
             </div>
@@ -82,6 +102,7 @@
               v-model="form.subject"
               type="text"
               placeholder="What's this about?"
+              required
               class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue transition-colors"
             />
           </div>
@@ -91,12 +112,14 @@
               v-model="form.message"
               rows="5"
               placeholder="Tell me about your project..."
+              required
               class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue transition-colors resize-none"
             />
           </div>
           <button
             type="submit"
-            class="w-full bg-accent-blue hover:bg-accent-blue-hover text-white text-sm font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            :disabled="sending"
+            class="w-full bg-accent-blue hover:bg-accent-blue-hover disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-semibold py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <span>{{ sending ? 'Sending...' : 'Send Message' }}</span>
             <svg v-if="!sending" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,6 +127,7 @@
             </svg>
           </button>
           <p v-if="sent" class="text-xs text-green-400 text-center">Message sent! I'll get back to you soon.</p>
+          <p v-if="error" class="text-xs text-red-400 text-center">Something went wrong. Please try again or email me directly.</p>
         </form>
 
       </div>
@@ -112,15 +136,35 @@
 </template>
 
 <script setup lang="ts">
+import emailjs from '@emailjs/browser'
+
 const form = reactive({ name: '', email: '', subject: '', message: '' })
 const sending = ref(false)
 const sent = ref(false)
+const error = ref(false)
 
-function handleSubmit() {
-  const body = `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-  window.location.href = `mailto:prolajumokeoni@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`
-  sent.value = true
-  Object.assign(form, { name: '', email: '', subject: '', message: '' })
-  setTimeout(() => { sent.value = false }, 4000)
+async function handleSubmit() {
+  sending.value = true
+  error.value = false
+  try {
+    await emailjs.send(
+      'service_ajsoxqa',
+      'template_cl86k97',
+      {
+        from_name: form.name,
+        from_email: form.email,
+        subject: form.subject,
+        message: form.message,
+      },
+      'LdDYRtCeES2Th7O_A'
+    )
+    sent.value = true
+    Object.assign(form, { name: '', email: '', subject: '', message: '' })
+    setTimeout(() => { sent.value = false }, 4000)
+  } catch {
+    error.value = true
+  } finally {
+    sending.value = false
+  }
 }
 </script>
