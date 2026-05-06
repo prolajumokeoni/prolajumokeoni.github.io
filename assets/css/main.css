@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Navy background CSS variables (RGB channels for Tailwind opacity support) ── */
+:root {
+  --navy-900: 255 255 255;
+  --navy-800: 241 245 249;
+  --navy-700: 226 232 240;
+  --navy-600: 209 213 219;
+  --color-text:       #111827;
+  --color-text-muted: #374151;
+  --color-text-faint: #9ca3af;
+}
+
+html.dark {
+  --navy-900: 11 11 24;
+  --navy-800: 15 15 34;
+  --navy-700: 19 19 42;
+  --navy-600: 26 26 53;
+  --color-text:       #ffffff;
+  --color-text-muted: #d1d5db;
+  --color-text-faint: #6b7280;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-navy-900 font-sans antialiased; color: var(--color-text); }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-sm transition-colors duration-200 tracking-wide;
+    color: var(--color-text-muted);
+  }
+  .nav-link:hover { color: var(--color-text); }
+
+  .section-tag {
+    @apply text-xs font-semibold tracking-widest uppercase flex items-center gap-2;
+    color: var(--color-text-faint);
+  }
+
+  .stat-number {
+    @apply text-5xl font-bold leading-none;
+    color: var(--color-text);
+  }
+}
