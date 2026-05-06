@@ -8,17 +8,18 @@ export default {
     './app.vue',
     './error.vue'
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif']
+        sans: ['Mulish', 'sans-serif']
       },
       colors: {
         navy: {
-          900: '#0b0b18',
-          800: '#0f0f22',
-          700: '#13132a',
-          600: '#1a1a35'
+          900: 'rgb(var(--navy-900) / <alpha-value>)',
+          800: 'rgb(var(--navy-800) / <alpha-value>)',
+          700: 'rgb(var(--navy-700) / <alpha-value>)',
+          600: 'rgb(var(--navy-600) / <alpha-value>)'
         },
         accent: {
           blue: '#2563eb',
