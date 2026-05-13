@@ -34,8 +34,9 @@
               View My Work
             </a>
             <a
-              href="/PriscillaResume.pdf"
-              download="PriscillaResume.pdf"
+              href="https://docs.google.com/document/d/1xc5aT6zUIwF_5qoTW8jRdHV-8P2HXv4Lh-DhSU2iC2E/export?format=pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-white/20 hover:border-gray-600 dark:hover:border-white/50 text-gray-900 dark:text-white text-sm font-semibold rounded-full transition-colors duration-200"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +91,7 @@
 
         <div class="w-72 h-72 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-2 border-gray-200 dark:border-white/10 relative z-10">
           <img
-            src="/hero-placeholder.png"
+            src="/hero-placeholder.webp"
             alt="Oni Olajumoke Priscilla"
             class="w-full h-full object-cover object-top"
           />

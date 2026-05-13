@@ -7,8 +7,8 @@
             <span class="text-accent-blue">/</span> About Me
           </p>
           <div class="flex items-center gap-3">
-            <span class="stat-number text-blue-600">4</span>
-            <span class="text-sm text-blue-600">Years of experience</span>
+            <span class="stat-number text-accent-blue">4</span>
+            <span class="text-sm text-accent-blue">Years of experience</span>
           </div>
         </div>
 

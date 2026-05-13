@@ -1,8 +1,8 @@
 <template>
   <nav class="fixed top-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none">
     <div class="w-full max-w-7xl mx-auto px-8 lg:px-16 py-5 grid grid-cols-3 items-center">
-      <!-- Left: empty -->
-      <div></div>
+      <!-- Left: empty (desktop only) -->
+      <div class="hidden md:block"></div>
 
       <!-- Center: Nav links -->
       <div class="hidden md:flex items-center justify-center gap-8">
@@ -14,7 +14,7 @@
       </div>
 
       <!-- Right: Theme toggle + Hamburger -->
-      <div class="flex items-center justify-end gap-3">
+      <div class="col-span-3 md:col-span-1 flex items-center justify-between md:justify-end gap-4">
         <!-- Theme toggle -->
       <button
         class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200 bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10"
@@ -47,12 +47,12 @@
 
   <!-- Mobile Menu -->
   <Transition name="slide-down">
-    <div v-if="menuOpen" class="fixed top-[72px] left-0 right-0 z-40 bg-navy-800 border-b border-white/10 py-4 flex flex-col md:hidden">
-      <a href="#about" class="nav-link text-base px-8 py-3 w-full border-b border-white/5" @click="menuOpen = false">About</a>
-      <a href="#skills" class="nav-link text-base px-8 py-3 w-full border-b border-white/5" @click="menuOpen = false">Skills</a>
-      <a href="#portfolio" class="nav-link text-base px-8 py-3 w-full border-b border-white/5" @click="menuOpen = false">Projects</a>
-      <a href="#experience" class="nav-link text-base px-8 py-3 w-full border-b border-white/5" @click="menuOpen = false">Experience</a>
-      <a href="#contact" class="nav-link text-base px-8 py-3 w-full" @click="menuOpen = false">Contact</a>
+    <div v-if="menuOpen" class="fixed top-[72px] left-0 right-0 bottom-0 z-40 bg-navy-800 flex flex-col md:hidden pt-8">
+      <a href="#about" class="nav-link text-base py-4 w-full text-center border-b border-white/5" @click="menuOpen = false">About</a>
+      <a href="#skills" class="nav-link text-base py-4 w-full text-center border-b border-white/5" @click="menuOpen = false">Skills</a>
+      <a href="#portfolio" class="nav-link text-base py-4 w-full text-center border-b border-white/5" @click="menuOpen = false">Projects</a>
+      <a href="#experience" class="nav-link text-base py-4 w-full text-center border-b border-white/5" @click="menuOpen = false">Experience</a>
+      <a href="#contact" class="nav-link text-base py-4 w-full text-center" @click="menuOpen = false">Contact</a>
     </div>
   </Transition>
 </template>
